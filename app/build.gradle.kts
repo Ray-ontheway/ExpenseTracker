@@ -75,6 +75,6 @@ dependencies {
     testImplementation(libs.hilt.android.testing)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.compiler)
-//    implementation(libs.hilt.ext.compiler)
-//    implementation(libs.hilt.ext.work)
+
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }

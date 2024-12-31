@@ -1,10 +1,13 @@
 package top.rayc.expensetracker.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import top.rayc.expensetracker.ui.EAppState
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ENavHost(
     appState: EAppState,
@@ -17,8 +20,9 @@ fun ENavHost(
         startDestination = startDestination,
         modifier = modifier,
     ) {
-        homeScreen()
+        homeScreen(navController)
         analyticsScreen()
+        transactionEditorScreen()
     }
 
 }
