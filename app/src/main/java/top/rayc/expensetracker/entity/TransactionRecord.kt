@@ -7,7 +7,7 @@ import java.time.LocalDate
 data class TransactionRecord(
     val id: Int,
     var amount: Float,
-    val category: TransactionCategory,
+    val category: TransactionCategory?,
     val type: TransactionType,
     val comment: String,
     val impl: Boolean = false,
