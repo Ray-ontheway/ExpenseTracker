@@ -12,7 +12,7 @@ import top.rayc.expensetracker.ui.EAppState
 fun ENavHost(
     appState: EAppState,
     modifier: Modifier = Modifier,
-    startDestination: String = HOME_ROUTE,
+    startDestination: String = SPLASH_ROUTE,
 ) {
     val navController = appState.navController
     NavHost(
@@ -20,9 +20,10 @@ fun ENavHost(
         startDestination = startDestination,
         modifier = modifier,
     ) {
+        splashScreen(navController)
         homeScreen(navController)
         analyticsScreen()
-        transactionEditorScreen()
+        transactionEditorScreen(navController)
     }
 
 }

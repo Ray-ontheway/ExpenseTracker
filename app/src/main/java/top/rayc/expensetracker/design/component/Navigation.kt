@@ -122,7 +122,8 @@ fun ENavigationSuiteScaffold(
     navigationSuiteItems: ENavigationSuiteScope.() -> Unit,
     modifier: Modifier = Modifier,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
-    content: @Composable () -> Unit
+    showNavigationBar: Boolean = true,
+    content: @Composable () -> Unit,
 ) {
     val layoutType = NavigationSuiteScaffoldDefaults.calculateFromAdaptiveInfo(windowAdaptiveInfo)
     val navigationSuiteItemColors = NavigationSuiteItemColors(
@@ -150,10 +151,12 @@ fun ENavigationSuiteScaffold(
 
     NavigationSuiteScaffold(
         navigationSuiteItems = {
-            ENavigationSuiteScope(
-                navigationSuiteScope = this,
-                navigationSuiteItemColors = navigationSuiteItemColors
-            ).run(navigationSuiteItems)
+            if (showNavigationBar) {
+                ENavigationSuiteScope(
+                    navigationSuiteScope = this,
+                    navigationSuiteItemColors = navigationSuiteItemColors
+                ).run(navigationSuiteItems)
+            }
         },
         layoutType = layoutType,
         containerColor = Color.Transparent,

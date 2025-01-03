@@ -33,13 +33,13 @@ fun TransactionSummary() {
         TransactionSummaryItem(
             modifier = Modifier
                 .background(Green80, shape = RoundedCornerShape(10.dp)),
-            value = "支出: ${50f}"
+            value = "收入: ${50f}"
         )
         Spacer(modifier = Modifier.width(20.dp))
         TransactionSummaryItem(
             modifier = Modifier
                 .background(Color.DarkGray, shape = RoundedCornerShape(10.dp)),
-            value = "支出: ${50f}"
+            value = "结余: ${50f}"
         )
     }
 }

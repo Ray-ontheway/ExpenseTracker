@@ -1,6 +1,8 @@
 package top.rayc.expensetracker.ui
 
+import android.os.Build
 import android.view.Window
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -31,12 +33,14 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavOptions
 import top.rayc.expensetracker.design.component.EBackground
 import top.rayc.expensetracker.design.component.ENavigationSuiteScaffold
+import top.rayc.expensetracker.navigation.ANALYTICS_ROUTE
 import top.rayc.expensetracker.navigation.ENavHost
+import top.rayc.expensetracker.navigation.HOME_ROUTE
 import top.rayc.expensetracker.navigation.TopLevelDestination
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun EApp(
     appState: EAppState,
@@ -55,6 +59,7 @@ fun EApp(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 internal fun EApp(
@@ -80,6 +85,7 @@ internal fun EApp(
             }
         },
         windowAdaptiveInfo = windowAdaptiveInfo,
+        showNavigationBar = currentDestination.isTopLevelDestination(),
     ) {
         Scaffold(
             modifier = modifier.semantics { testTagsAsResourceId = true },
@@ -112,4 +118,8 @@ private fun NavDestination?.isTopLevelDestinationInHierarchy(destination: TopLev
     return this?.hierarchy?.any {
         it.route?.contains(destination.name, true) ?: false
     } ?: false
+}
+
+private fun NavDestination?.isTopLevelDestination(): Boolean {
+    return this?.route?.equals(HOME_ROUTE) ?: false || this?.route?.equals(ANALYTICS_ROUTE) ?: false
 }

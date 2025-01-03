@@ -1,12 +1,21 @@
 package top.rayc.expensetracker.entity
 
+import io.objectbox.annotation.Convert
+import io.objectbox.annotation.Entity
+import io.objectbox.annotation.Id
+import io.objectbox.annotation.Transient
+
+@Entity
 data class TransactionCategory (
-    val id: Int,
-    val pid: Int,
-    val name: String,
-    val type: TransactionType = TransactionType.EXPENSE,
-    val description: String,
-    val children: List<TransactionCategory> = emptyList()
+    @Id var id: Long = 0,
+    var pid: Long = 0,
+    var name: String? = null,
+    @Convert(converter = TransactionTypeConverter::class, dbType = Int::class)
+    var type: TransactionType = TransactionType.EXPENSE,
+    var description: String? = null,
+
+    @Transient
+    var children: List<TransactionCategory> = emptyList()
 )
 
 val defaultCategories = listOf(

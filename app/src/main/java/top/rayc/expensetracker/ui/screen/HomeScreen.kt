@@ -16,7 +16,6 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
-import androidx.compose.material3.rememberDateRangePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,10 +25,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import top.rayc.expensetracker.EApplication
-import top.rayc.expensetracker.entity.TRANSACTION_DEFAULT
 import top.rayc.expensetracker.navigation.navigateToTransactionEditor
 import top.rayc.expensetracker.ui.component.TransactionSummary
 import top.rayc.expensetracker.viewmodel.TransactionViewModel
+import top.rayc.expensetracker.vo.TRANSACTION_DEFAULT
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
